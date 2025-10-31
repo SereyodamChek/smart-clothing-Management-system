@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE - សម្លៀកបំពាក់ស្ត្រីបែបផ្តាច់មុខ</title>
+    <link rel="shortcut icon" type="x-icon" href="logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #8a4fff;
+            --secondary: #ff6b9d;
+            --accent: #ff9f43;
+            --light: #f9f7fe;
+            --dark: #2d3047;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+            --modern-bg: #f8f9fa;
+            --modern-card: #ffffff;
+            --modern-text: #333333;
+            --modern-border: #e0e0e0;
+            --gradient: linear-gradient(135deg, #8a4fff, #ff6b9d);
+            --luxury-gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kantumruy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--modern-text);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--luxury-gold);
+        }
+
+        .khmer-logo {
+            font-family: 'Kantumruy', 'Battambang', sans-serif;
+            font-weight: bold;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--luxury-gold), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--luxury-gold);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--luxury-gold);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            position: relative;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(138, 79, 255, 0.9), rgba(255, 107, 157, 0.8)), 
+                        url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            position: relative;
+        }
+
+        .btn:hover {
+            background-color: #ff4d8d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            box-shadow: 0 4px 15px rgba(255, 159, 67, 0.4);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff8c1a;
+            box-shadow: 0 6px 20px rgba(255, 159, 67, 0.6);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--dark);
+            font-size: 2.2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: var(--modern-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: none;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-img {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0;
+            transition: transform 0.4s;
+        }
+
+        .category-card:hover .category-img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .category-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #f9f7fe, #f0ebff);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--modern-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            border: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0;
+            transition: transform 0.4s;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--modern-card);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .cart-items {
+            margin: 1.5rem 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: var(--light);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .quantity-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+
+        .cart-summary {
+            border-top: 2px solid #eee;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .summary-total {
+            font-weight: bold;
+            font-size: 1.3rem;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+            color: var(--primary);
+        }
+
+        .qr-payment {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: 12px;
+        }
+
+        .qr-code-container {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .bank-info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .bank-logo {
+            font-weight: bold;
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bank-hotline {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--luxury-gold);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--luxury-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        /* Khmer Pattern Overlay */
+        .khmer-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="50%" y="50%" font-family="Kantumruy" font-size="20" text-anchor="middle" dominant-baseline="middle">ក</text></svg>');
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                display: none;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+                margin: 0;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 1rem;
+            }
+
+            .header-actions {
+                margin-top: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .cart-item-controls {
+                align-self: flex-end;
+            }
+            
+            .category-grid,
+            .product-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-img {
+                height: 350px;
+            }
+            
+            .category-img {
+                height: 300px;
+            }
+            
+            .qr-code-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <i class="fas fa-crown logo-icon"></i>
+                        <span class="khmer-logo">LUXE ស្ត្រី</span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn">☰</button>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#">ទំព័រដើម</a></li>
+                        <li><a href="#categories">ប្រភេទ</a></li>
+                        <li><a href="#products">ផលិតផល</a></li>
+                        <li><a href="#features">សេវាកម្ម</a></li>
+                        <li><a href="#contact">ទំនាក់ទំនង</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">០</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="khmer-pattern"></div>
+        <div class="container">
+            <h1>LUXE - ពិភពសម្លៀកបំពាក់នារីសម័យថ្មី</h1>
+            <p>ស្វែងរកសម្លៀកបំពាក់បែបផ្តាច់មុខសម្រាប់ស្ត្រីទាន់សម័យ។ រចនាប័ទ្មដែលមិនធ្លាប់មានពីមុន គុណភាពខ្ពស់ និងស្ទីលដ៏ពិសេស។</p>
+            <a href="#products" class="btn">ទិញឥវ៉ាន់ឥឡូវ</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">ប្រភេទសម្លៀកបំពាក់</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://i.pinimg.com/736x/e8/cb/f2/e8cbf25a8191c0881d018292a9d4bffe.jpg');"></div>
+                    <div class="category-content">
+                        <h3>អាវ</h3>
+                        <p>អាវបែបផ្តាច់មុខសម្រាប់ស្ត្រីទាន់សម័យ</p>
+                        <a href="#" class="btn">ស្វែងរក</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://i.pinimg.com/1200x/62/3d/02/623d029c34af3295709ce52538d966c3.jpg');"></div>
+                    <div class="category-content">
+                        <h3>ខោជើងវែង</h3>
+                        <p>ខោស្អាតៗសម្រាប់ពេលធ្វើការ ប្រើបានគ្រប់ពេល</p>
+                        <a href="#" class="btn">ស្វែងរក</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://i.pinimg.com/736x/7a/e6/ad/7ae6ad6b53ac847a1ffba6f7c7808989.jpg');"></div>
+                    <div class="category-content">
+                        <h3>ខោខ្លី</h3>
+                        <p>ខោខ្លីទាន់សម័យសម្រាប់រមនុស្សគ្រប់រូប</p>
+                        <a href="#" class="btn">ស្វែងរក</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://i.pinimg.com/736x/be/5c/30/be5c30ffe05e94aa2489835ff118ec25.jpg');"></div>
+                    <div class="category-content">
+                        <h3>គ្រឿងអលង្ការ</h3>
+                        <p>គ្រឿងអលង្ការបែបផ្តាច់មុខសម្រាប់បំពេញសម្លៀកបំពាក់</p>
+                        <a href="#" class="btn">ស្វែងរក</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">ផលិតផលថ្មី</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">ថ្មី!</div>
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/736x/e8/cb/f2/e8cbf25a8191c0881d018292a9d4bffe.jpg');"></div>
+                    <div class="product-content">
+                        <h3>អាវ LUXE Premium</h3>
+                        <p class="product-price">$25</p>
+                        <p>អាវស្បែក ១០០%</p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="អាវកាយ LUXE Premium" data-price="25">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">កំពុងលក់ខ្លាំង</div>
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/1200x/25/69/03/256903ec38470d2471e38bda79a1010e.jpg');"></div>
+                    <div class="product-content">
+                        <h3>ខោជើងវែង Elegance</h3>
+                        <p class="product-price">$18</p>
+                        <p>ខោស្អាតៗសម្រាប់ពេលធ្វើការ ប្រើបានគ្រប់ពេល </p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="ខោជើងវែង Elegance" data-price="18">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/1200x/93/7c/7e/937c7ee07e44e76e572141b2eeaa656f.jpg');"></div>
+                    <div class="product-content">
+                        <h3>ខោខ្លី Summer</h3>
+                        <p class="product-price">$18</p>
+                        <p>ខោខ្លីទាន់សម័យសម្រាប់រមនុស្សគ្រប់រូប</p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="ខោខ្លី Summer" data-price="18">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/1200x/7a/e7/a5/7ae7a5d4e52777453dbfd18832af4176.jpg');"></div>
+                    <div class="product-content">
+                        <h3>កាបូប LUXE Signature</h3>
+                        <p class="product-price">$30</p>
+                        <p>កាបូបបែបផ្តាច់មុខធ្វើពីស្បែកពិត ១០០%</p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="កាបូប LUXE Signature" data-price="30">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">តម្លៃពិសេស</div>
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/736x/0d/47/e9/0d47e9aba57388b2e74623e7509b7657.jpg');"></div>
+                    <div class="product-content">
+                        <h3>ខ្សែក LUXE Gold</h3>
+                        <p class="product-price">$19</p>
+                        <p>ខ្សែកបែបផ្តាច់មុខ</p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="ខ្សែក LUXE Gold" data-price="18">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://i.pinimg.com/1200x/73/9b/76/739b7683744eb7e1311dad63638632fe.jpg');"></div>
+                    <div class="product-content">
+                        <h3>វ៉ែនតា Designer</h3>
+                        <p class="product-price">$20</p>
+                        <p>វ៉ែនតារចនាដោយអ្នករចនាបែបផ្តាច់មុខ</p>
+                        <div class="product-actions">
+                            <button class="btn btn-accent add-to-cart" data-product="វ៉ែនតា Designer" data-price="20">បន្ថែមទៅកន្ត្រក</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">ហេតុអ្វីជ្រើសរើស LUXE</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>គុណភាពខ្ពស់</h3>
+                    <p>ផលិតពីសម្ភារៈគុណភាពខ្ពស់បំផុត ធានាភាពយូរអង្វែង</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>ការដឹកជញ្ជូនឥតគិតថ្លៃ</h3>
+                    <p>ដឹកជញ្ជូនឥតគិតថ្លៃទៅកាន់ផ្ទះអ្នក ក្នុងរាជធានីភ្នំពេញ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">↩️</div>
+                    <h3>ការត្រឡប់មកវិញ ៧ ថ្ងៃ</h3>
+                    <p>អាចត្រឡប់ទំនិញក្នុងរយៈពេល ៧ ថ្ងៃ ប្រសិនបើមិនពេញចិត្ត</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👑</div>
+                    <h3>សេវាកម្ម VIP</h3>
+                    <p>សេវាកម្មផ្តាច់មុខសម្រាប់អតិថិជន LUXE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>កន្ត្រកទិញឥវ៉ាន់</h2>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+                <div class="empty-cart-message" id="emptyCartMessage">
+                    <p>កន្ត្រកទិញឥវ៉ាន់របស់អ្នកទទេ។</p>
+                </div>
+            </div>
+            
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="summary-row">
+                    <span>សរុបរង:</span>
+                    <span id="subtotal">$០.០០</span>
+                </div>
+                <div class="summary-row">
+                    <span>ការដឹកជញ្ជូន:</span>
+                    <span id="shipping">$០.០០</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>សរុប:</span>
+                    <span id="total">$០.០០</span>
+                </div>
+                
+                <div class="qr-payment">
+                    <h3>ទូទាត់តាម QR Code</h3>
+                    <div class="qr-code-container" id="qrCode">
+                        <!-- Always show static QR image by default -->
+                        <img id="qrStatic" src="image.png" alt="ACLEDA Bank QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                        <!-- Optional dynamic QR canvas (hidden by default) -->
+                        <canvas id="qrCanvas" style="display:none; width:100%; height:100%"></canvas>
+                    </div>
+                    <p>ស្កេនដើម្បីទូទាត់</p>
+                    
+                    <div class="bank-info">
+                        <div class="bank-logo">ACLEDA BANK</div>
+                        <p>Scan. Pay Done.</p>
+                        <div class="bank-hotline">ទូរស័ព្ទ: ០৯៦២៦០៩៨២៤</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-accent" id="checkoutBtn">បញ្ជាទិញឥឡូវ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LUXE ស្ត្រី</h3>
+                    <p>ហាងលក់សម្លៀកបំពាក់បែបផ្តាច់មុខសម្រាប់ស្ត្រីទាន់សម័យ។ គុណភាពខ្ពស់ និងស្ទីលដ៏ពិសេស។</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>ទិញឥវ៉ាន់</h3>
+                    <ul>
+                        <li><a href="#">អាវកាយ</a></li>
+                        <li><a href="#">ខោជើងវែង</a></li>
+                        <li><a href="#">ខោខ្លី</a></li>
+                        <li><a href="#">កាបូប</a></li>
+                        <li><a href="#">គ្រឿងអលង្ការ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>អំពីពួកយើង</h3>
+                    <ul>
+                        <li><a href="#">ប្រវត្តិក្រុមហ៊ុន</a></li>
+                        <li><a href="#">ការងារ</a></li>
+                        <li><a href="#">សារព័ត៌មាន</a></li>
+                        <li><a href="#">ការទទួលខុសត្រូវ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ជំនួយ</h3>
+                    <ul>
+                        <li><a href="#">ទំនាក់ទំនងពួកយើង</a></li>
+                        <li><a href="#">សំណួរដែលសួរញឹកញាប់</a></li>
+                        <li><a href="#">ការដឹកជញ្ជូន</a></li>
+                        <li><a href="#">ការត្រឡប់មកវិញ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>រក្សាសិទ្ធិ &copy; CHHAIDEN_LUXE ស្ត្រី។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeModal = document.querySelector('.close-modal');
+        const cartItems = document.getElementById('cartItems');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const cartSummary = document.getElementById('cartSummary');
+        const subtotalElement = document.getElementById('subtotal');
+        const totalElement = document.getElementById('total');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const qrCodeContainer = document.getElementById('qrCode');
+        const qrStatic = document.getElementById('qrStatic');
+        const qrCanvas = document.getElementById('qrCanvas');
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners
+            initializeEventListeners();
+        });
+
+        // Initialize all event listeners
+        function initializeEventListeners() {
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.getAttribute('data-product');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    addToCart(product, price);
+                });
+            });
+
+            // Modal functionality
+            cartIcon.addEventListener('click', function() {
+                cartModal.style.display = 'flex';
+                updateQRCode();
+            });
+
+            closeModal.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            });
+
+            // Checkout button
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length > 0) {
+                    alert('សូមអរគុណសម្រាប់ការបញ្ជាទិញ! សូមស្កេន QR Code ដើម្បីបញ្ចប់ការទូទាត់។');
+                    cart = [];
+                    updateCart();
+                    cartModal.style.display = 'none';
+                }
+            });
+
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('show');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        document.querySelector('nav').classList.remove('show');
+                    }
+                });
+            });
+        }
+
+        // Add item to cart
+        function addToCart(product, price) {
+            const existingItem = cart.find(item => item.product === product);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    product: product,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification('បានបន្ថែមផលិតផលទៅក្នុងកន្ត្រករបស់អ្នក!');
+        }
+
+        // Update cart UI
+        function updateCart() {
+            const cartCount = document.querySelector('.cart-count');
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            // Update cart items in modal
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartSummary.style.display = 'none';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                cartSummary.style.display = 'block';
+                
+                let subtotal = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-img" style="background-image: url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                            <div class="cart-item-details">
+                                <h4>${item.product}</h4>
+                                <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn decrease" data-product="${item.product}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase" data-product="${item.product}">+</button>
+                            <button class="quantity-btn remove" data-product="${item.product}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+                
+                const shipping = 0.00; // Free shipping
+                const total = subtotal + shipping;
+                
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.decrease').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const product = this.getAttribute('data-product');
+                        decreaseQuantity(product);
+                    });
+                });
+                
+                document.querySelectorAll('.increase').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const product = this.getAttribute('data-product');
+                        increaseQuantity(product);
+                    });
+                });
+                
+                document.querySelectorAll('.remove').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const product = this.getAttribute('data-product');
+                        removeFromCart(product);
+                    });
+                });
+            }
+
+            // Ensure QR section state is correct whenever cart updates
+            updateQRCode();
+        }
+
+        // Cart item quantity controls
+        function decreaseQuantity(product) {
+            const item = cart.find(item => item.product === product);
+            if (item) {
+                if (item.quantity > 1) {
+                    item.quantity -= 1;
+                } else {
+                    removeFromCart(product);
+                    return;
+                }
+                updateCart();
+            }
+        }
+
+        function increaseQuantity(product) {
+            const item = cart.find(item => item.product === product);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+            }
+        }
+
+        function removeFromCart(product) {
+            cart = cart.filter(item => item.product !== product);
+            updateCart();
+            showNotification('បានដកផលិតផលចេញពីកន្ត្រក!');
+        }
+
+        // Update QR Code area (static image by default; optional dynamic below)
+        function updateQRCode() {
+            // Always show the static image.png
+            if (qrStatic) qrStatic.style.display = 'block';
+            if (qrCanvas) qrCanvas.style.display = 'none';
+
+            // ---------------- Optional: Dynamic QR based on total ----------------
+            // Uncomment this block to generate a QR to the canvas instead of the image.
+            // const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            // const shipping = 0.00;
+            // const total = subtotal + shipping;
+            // const paymentData = {
+            //     bank: "ACLEDA BANK",
+            //     account: "123456789",
+            //     amount: total.toFixed(2),
+            //     reference: "LUXE" + Date.now()
+            // };
+            // if (qrCanvas) {
+            //     QRCode.toCanvas(qrCanvas, JSON.stringify(paymentData), { width: qrCanvas.clientWidth || 180 }, function(error) {
+            //         if (error) {
+            //             console.error(error);
+            //             // fallback back to static image
+            //             if (qrStatic) qrStatic.style.display = 'block';
+            //             if (qrCanvas) qrCanvas.style.display = 'none';
+            //             return;
+            //         }
+            //         // Show canvas QR, hide static image
+            //         if (qrStatic) qrStatic.style.display = 'none';
+            //         if (qrCanvas) qrCanvas.style.display = 'block';
+            //     });
+            // }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: var(--success);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 4px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1001;
+                transition: opacity 0.3s;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
