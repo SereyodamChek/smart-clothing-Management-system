@@ -1,0 +1,55 @@
+.qr-payment {
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 280px;
+  margin: auto;
+  font-family: "Khmer OS Battambang", sans-serif;
+}
+
+.qr-payment h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.qr-code-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.qr-image, .qr-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-instruction {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.bank-info {
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.bank-logo {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.bank-slogan {
+  font-style: italic;
+  color: #555;
+}
+
+.bank-hotline a {
+  color: #222;
+  text-decoration: none;
+}
